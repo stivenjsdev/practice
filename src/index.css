@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Restablecer márgenes y rellenos */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Restablecer listas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Restablecer enlaces */
+a {
+  text-decoration: none;
+}
+
+/* Restablecer encabezados */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+/* Restablecer imágenes */
+img {
+  border: 0;
+}
+
+/* Restablecer tablas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Restablecer formularios */
+input,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
+
+/* end reset css */
+
+.increase, .decrease {
+  width: 30px;
+  height: 30px;
+}
+
+.inputCounter {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: block;
+}
+
+.set {
+  width: 100px;
+  height: 30px;
+}
+
+.creatorInput {
+  width: 200px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #000;
+  border-radius: 5px;
+  display: block;
+}
