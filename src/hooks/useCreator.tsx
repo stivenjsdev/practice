@@ -3,17 +3,30 @@ import { db } from "../data/db";
 import type { Creator } from "../types";
 
 export function useCreator() {
-  const [creators, setCreators] = useState<Creator[]>([]);
+  const initialStorageCreators = (): Creator[] => {
+    const localStorageCreators = localStorage.getItem("creators");
+    return localStorageCreators ? JSON.parse(localStorageCreators) : [];
+  };
+
+  const [creators, setCreators] = useState<Creator[]>(initialStorageCreators);
 
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [ageInput, setAgeInput] = useState<number | string>("");
 
   useEffect(() => {
+    // Emulate a slow connection api
     setTimeout(() => {
-      setCreators(db);
+      if (creators.length === 0) {
+        setCreators(db);
+      }
     }, 3000);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("creators", JSON.stringify(creators));
+  }, [creators]);
 
   function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -24,7 +37,7 @@ export function useCreator() {
     const value = e.target.value;
     setEmailInput(value);
   }
-  
+
   function handleChangeAge(e: React.ChangeEvent<HTMLInputElement>) {
     const value: number = +e.target.value;
     setAgeInput(value);
@@ -47,5 +60,14 @@ export function useCreator() {
     setAgeInput("");
   }
 
-  return { creators, nameInput, emailInput, ageInput, handleChangeName, handleChangeEmail, handleChangeAge, addCreator };
+  return {
+    creators,
+    nameInput,
+    emailInput,
+    ageInput,
+    handleChangeName,
+    handleChangeEmail,
+    handleChangeAge,
+    addCreator,
+  };
 }
