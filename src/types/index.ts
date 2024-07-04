@@ -3,4 +3,5 @@ export type Creator = {
   name: string;
   email: string;
   age: number;
+  money: number;
 };

@@ -1,3 +1,4 @@
+import { formatCurrency } from "./helper";
 import { useCount } from "./hooks/useCount";
 import { useCreator } from "./hooks/useCreator";
 
@@ -61,7 +62,7 @@ function App() {
           <ul>
             {creators.map((creator) => (
               <li key={creator.id}>
-                {creator.name} - {creator.email} - {creator.age}
+                {creator.name} - {creator.email} - {creator.age} - {formatCurrency(creator.money)}
               </li>
             ))}
           </ul>

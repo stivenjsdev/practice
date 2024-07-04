@@ -38,6 +38,7 @@ export function useCreator() {
       name: nameInput,
       email: emailInput,
       age: ageInput,
+      money: 0,
     };
 
     setCreators([...creators, newCreator]);
