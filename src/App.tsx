@@ -25,7 +25,9 @@ function App() {
 
   return (
     <>
-      <h1>Practice</h1>
+      <header className="header">
+        <h1 className="title">Practice</h1>
+      </header>
       <div className="counterContainer">
         <h3>Counter: {count}</h3>
         <button className="increase" onClick={() => setCount(count + 1)}>
@@ -49,9 +51,27 @@ function App() {
       <div className="addCreatorContainer">
         <h3>Add: Creator:</h3>
         <form onSubmit={(e) => addCreator(e)}>
-          <input className="creatorInput" type="text" placeholder="Name" value={nameInput} onChange={handleChangeName} />
-          <input className="creatorInput" type="email" placeholder="Email" value={emailInput} onChange={handleChangeEmail} />
-          <input className="creatorInput" type="number" placeholder="Age" value={ageInput} onChange={handleChangeAge} />
+          <input
+            className="creatorInput"
+            type="text"
+            placeholder="Name"
+            value={nameInput}
+            onChange={handleChangeName}
+          />
+          <input
+            className="creatorInput"
+            type="email"
+            placeholder="Email"
+            value={emailInput}
+            onChange={handleChangeEmail}
+          />
+          <input
+            className="creatorInput"
+            type="number"
+            placeholder="Age"
+            value={ageInput}
+            onChange={handleChangeAge}
+          />
           <input className="creatorInput" type="submit" value="Add Creator" />
         </form>
       </div>
@@ -62,7 +82,8 @@ function App() {
           <ul>
             {creators.map((creator) => (
               <li key={creator.id}>
-                {creator.name} - {creator.email} - {creator.age} - {formatCurrency(creator.money)}
+                {creator.name} - {creator.email} - {creator.age} -{" "}
+                {formatCurrency(creator.money)}
               </li>
             ))}
           </ul>
