@@ -7,7 +7,7 @@ export function useCreator() {
 
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
-  const [ageInput, setAgeInput] = useState(0);
+  const [ageInput, setAgeInput] = useState<number | string>("");
 
   useEffect(() => {
     setTimeout(() => {
@@ -26,7 +26,7 @@ export function useCreator() {
   }
   
   function handleChangeAge(e: React.ChangeEvent<HTMLInputElement>) {
-    const value = +e.target.value;
+    const value: number = +e.target.value;
     setAgeInput(value);
   }
 
@@ -37,14 +37,14 @@ export function useCreator() {
       id: creators.length + 1,
       name: nameInput,
       email: emailInput,
-      age: ageInput,
+      age: +ageInput,
       money: 0,
     };
 
     setCreators([...creators, newCreator]);
     setNameInput("");
     setEmailInput("");
-    setAgeInput(0);
+    setAgeInput("");
   }
 
   return { creators, nameInput, emailInput, ageInput, handleChangeName, handleChangeEmail, handleChangeAge, addCreator };
