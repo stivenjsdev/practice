@@ -67,6 +67,10 @@ export function useCreator() {
     setMoneyInput("");
   }
 
+  function empty() {
+    return !nameInput || !emailInput || !ageInput || !moneyInput;
+  }
+
   return {
     creators,
     nameInput,
@@ -78,5 +82,6 @@ export function useCreator() {
     handleChangeAge,
     handleChangeMoney,
     addCreator,
+    empty,
   };
 }

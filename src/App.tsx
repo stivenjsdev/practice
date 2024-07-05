@@ -24,6 +24,7 @@ function App() {
     handleChangeName,
     handleChangeMoney,
     addCreator,
+    empty,
   } = useCreator();
 
   const total = useMemo(
@@ -89,7 +90,7 @@ function App() {
               value={moneyInput}
               onChange={handleChangeMoney}
             />
-            <input className="creatorInput" type="submit" value="Add Creator" />
+            <input className="creatorInput" type="submit" value="Add Creator" disabled={empty()} />
           </form>
         </div>
 
