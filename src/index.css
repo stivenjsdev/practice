@@ -112,3 +112,15 @@ select {
   flex-direction: column;
   gap: 10px;
 }
+
+.total {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.creatorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 10px 0;
+}

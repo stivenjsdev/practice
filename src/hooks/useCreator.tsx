@@ -13,6 +13,7 @@ export function useCreator() {
   const [nameInput, setNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
   const [ageInput, setAgeInput] = useState<number | string>("");
+  const [moneyInput, setMoneyInput] = useState<number | string>("");
 
   useEffect(() => {
     // Emulate a slow connection api
@@ -43,6 +44,11 @@ export function useCreator() {
     setAgeInput(value);
   }
 
+  function handleChangeMoney(e: React.ChangeEvent<HTMLInputElement>) {
+    const value: number = +e.target.value;
+    setMoneyInput(value);
+  }
+
   function addCreator(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -51,13 +57,14 @@ export function useCreator() {
       name: nameInput,
       email: emailInput,
       age: +ageInput,
-      money: 0,
+      money: +moneyInput,
     };
 
     setCreators([...creators, newCreator]);
     setNameInput("");
     setEmailInput("");
     setAgeInput("");
+    setMoneyInput("");
   }
 
   return {
@@ -65,9 +72,11 @@ export function useCreator() {
     nameInput,
     emailInput,
     ageInput,
+    moneyInput,
     handleChangeName,
     handleChangeEmail,
     handleChangeAge,
+    handleChangeMoney,
     addCreator,
   };
 }

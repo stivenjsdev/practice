@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { formatCurrency } from "./helper";
 import { useCount } from "./hooks/useCount";
 import { useCreator } from "./hooks/useCreator";
@@ -17,11 +18,18 @@ function App() {
     nameInput,
     ageInput,
     emailInput,
+    moneyInput,
     handleChangeAge,
     handleChangeEmail,
     handleChangeName,
+    handleChangeMoney,
     addCreator,
   } = useCreator();
+
+  const total = useMemo(
+    () => creators.reduce((total, creator) => total + creator.money, 0),
+    [creators]
+  );
 
   return (
     <>
@@ -74,6 +82,13 @@ function App() {
               value={ageInput}
               onChange={handleChangeAge}
             />
+            <input
+              className="creatorInput"
+              type="number"
+              placeholder="Money"
+              value={moneyInput}
+              onChange={handleChangeMoney}
+            />
             <input className="creatorInput" type="submit" value="Add Creator" />
           </form>
         </div>
@@ -81,14 +96,19 @@ function App() {
         <div className="creatorsContainer">
           <h3>Creators:</h3>
           {creators.length ? (
-            <ul>
-              {creators.map((creator) => (
-                <li key={creator.id}>
-                  {creator.name} - {creator.email} - {creator.age} -{" "}
-                  {formatCurrency(creator.money)}
-                </li>
-              ))}
-            </ul>
+            <>
+              <ul className="creatorsList">
+                {creators.map((creator) => (
+                  <li key={creator.id}>
+                    {creator.name} - {creator.email} - {creator.age} -{" "}
+                    {formatCurrency(creator.money)}
+                  </li>
+                ))}
+              </ul>
+              <p className="total">
+                <span>Total money:</span> {formatCurrency(total)}
+              </p>
+            </>
           ) : (
             <p>Loading...</p>
           )}
